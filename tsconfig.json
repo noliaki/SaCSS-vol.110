@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "lib": [
+      "dom",
+      "es2015",
+      "es2015.promise"
+    ],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es5",
+    "typeRoots": ["types"],
+
+  },
+  "include": ["src"],
+  "paths": {
+    "~/*": ["./src/*"],
+    "@/*": ["./src/*"]
+  }
+}

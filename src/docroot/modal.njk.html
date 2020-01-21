@@ -1,0 +1,24 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% raw %}
+<div id="app">
+  <ul class="photos">
+    <li class="photo-item" v-for="(photo, index) in photos" :key="photo.id">
+      <button type="button">
+        <img :src="photo.thumbnailUrl" :alt="photo.title">
+      </button>
+    </li>
+  </ul>
+</div>
+{% endraw %}
+{% endblock %}
+
+{% block link %}
+<link rel="preload" href="./js/modal.js" as="script">
+<link rel="stylesheet" href="./css/modal.css">
+{% endblock %}
+
+{% block script %}
+<script src="./js/modal.js" defer async></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+media-query($break-point = $size-break-point)
+  @media screen and (max-width: $break-point)
+    {block}
+
+rel-size($size, $base-size = 640)
+  return (($size / $base-size) * 100)%
+
+z-index($depth-name)
+  if $depth-name >= 0
+    z-index $depth-name
+  else
+    $index = index($depth, $depth-name)
+    if $index != null && $index >= 0
+      z-index ($index + 1)

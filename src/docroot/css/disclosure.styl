@@ -1,0 +1,19 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+.posts-item
+  @apply border
+
+.posts-item + .posts-item
+  @apply mt-4
+
+.posts-item-btn
+  @apply block w-full text-left py-2 px-4
+
+.posts-item-body
+  @apply py-2 px-4
+
+.post-body-enter-active
+.post-body-leave-active
+  transition height 3000ms ease

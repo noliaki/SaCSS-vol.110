@@ -1,0 +1,72 @@
+*
+  &,
+  &::before
+  &::after
+    box-sizing border-box
+    background-repeat: no-repeat
+
+*::before
+*::after
+  pointer-events none
+
+html
+  overflow-y: scroll
+  text-size-adjust: 100%
+  font-size: $size-font-base
+
+body
+  color: $color-font
+  text-size-adjust: 100%
+  font-family: $font-family-base
+  font-smooth: always
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  line-height: $line-height-base
+
+@-ms-viewport
+  width: device-width
+
+// =============================================
+//  selection color
+// =============================================
+::selection
+  color: $color-selection-font
+  background: $color-selection-bg
+
+// =============================================
+//  anchor color
+// =============================================
+a
+  color: $color-link
+
+  &:link
+    color: $color-link
+
+
+  &:visited
+    color: $color-link-visited
+
+
+  &:hover
+    color: $color-link-hover
+
+    & img
+      opacity: $opacity-hover-img
+
+  &:active
+    color: $color-link-active
+
+
+// =============================================
+//  img style
+// =============================================
+img
+  max-width: 100%
+  vertical-align: bottom
+
+.grid
+  display: grid
+
+.flex
+  display: flex
+

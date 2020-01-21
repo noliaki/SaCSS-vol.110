@@ -1,0 +1,37 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{% raw %}
+<div id="app">
+  <ul class="posts">
+    <the-posts-item v-for="post in posts" :key="post.id" :post="post" />
+  </ul>
+</div>
+
+<script type="text/x-template" id="template-posts-item">
+  <li class="posts-item">
+    <button type="button" class="posts-item-btn" @click.prevent="onClick">{{ post.title }}</button>
+    <transition
+      name="post-body"
+      @enter="enter"
+      @afterEnter="afterTransition"
+      @leave="leave"
+      @afterLeave="afterTransition"
+    >
+      <div v-show="isShownBody">
+        <div class="posts-item-body">{{ post.body }}</div>
+      </div>
+    </transition>
+  </li>
+</script>
+{% endraw %}
+{% endblock %}
+
+{% block link %}
+<link rel="preload" href="./js/disclosure.js" as="script">
+<link rel="stylesheet" href="./css/disclosure.css">
+{% endblock %}
+
+{% block script %}
+<script src="./js/disclosure.js" defer async></script>
+{% endblock %}
