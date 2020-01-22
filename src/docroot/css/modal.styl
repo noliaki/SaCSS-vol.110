@@ -1,3 +1,106 @@
 @tailwind base
 @tailwind components
 @tailwind utilities
+
+.photos
+  display: grid
+  grid-gap 10px
+  grid-template-columns repeat(6, 1fr)
+
+.photo-item-btn
+  @apply block w-full
+
+  > img
+    @apply w-full
+
+.modal
+  @apply fixed inset-0 flex
+
+.modal-bg
+  @apply absolute inset-0
+  background-color: rgba(#000, 0.8)
+
+.modal-content
+  @apply relative m-auto
+
+.detail
+  @apply bg-white rounded-lg overflow-hidden p-4
+
+.modal-enter
+.modal-leave-to
+  opacity 0
+
+.modal-enter-active
+.modal-leave-active
+  transition opacity 300ms ease
+
+.modal-leave
+.modal-enter-to
+  opacity 1
+
+.modal-content-enter
+.modal-content-leave-to
+  transform: translateY(10px)
+  opacity 0
+
+.modal-content-enter-active
+.modal-content-leave-active
+  transition opacity 300ms ease, transform 300ms ease
+
+.modal-content-enter-to
+.modal-content-leave
+  transform: translateY(0)
+  opacity 1
+
+.detail-prev
+.detail-next
+  display: block
+  width 50px
+  height 50px
+  position absolute
+  top 0
+  bottom 0
+  margin auto
+
+  &::before
+    content ''
+    display: block
+    border-radius: 999em
+    width 100%
+    height 100%
+    background-color #fff
+    position: absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    margin auto
+    border 2px solid #ccc
+
+  &::after
+    content ''
+    display: block
+    width 30%
+    height 30%
+    position: absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    margin auto
+
+.detail-prev
+  left -40px
+
+  &::after
+    border-top 3px solid #0f0f0f
+    border-left 3px solid #0f0f0f
+    transform: rotate(-45deg)
+
+.detail-next
+  right -40px
+
+  &::after
+    border-top 3px solid #0f0f0f
+    border-right 3px solid #0f0f0f
+    transform: rotate(45deg)

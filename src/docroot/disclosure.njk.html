@@ -9,8 +9,12 @@
 </div>
 
 <script type="text/x-template" id="template-posts-item">
-  <li class="posts-item">
-    <button type="button" class="posts-item-btn" @click.prevent="onClick">{{ post.title }}</button>
+  <li class="posts-item" :class="{ '-active': isShownBody }">
+    <button
+      type="button"
+      class="posts-item-btn"
+      @click.prevent="isShownBody = !isShownBody"
+    >{{ post.title }}</button>
     <transition
       name="post-body"
       @enter="enter"

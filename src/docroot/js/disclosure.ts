@@ -22,16 +22,14 @@ const ThePostsItem = Vue.component('template-posts-item', {
     }
   },
   methods: {
-    onClick(): void {
-      document.querySelector('body').style.height = '0px'
-    },
     enter(el: HTMLElement): void {
       el.style.overflow = 'hidden'
-      // const height: number = el.scrollHeight
-      // el.style.height = '0px'
-      // el.style.height = `${height}px`
-      // nextFrame((): void => {
-      // })
+      const height: number = el.scrollHeight
+      el.style.height = '0'
+
+      nextFrame((): void => {
+        el.style.height = `${height}px`
+      })
     },
     leave(el: HTMLElement): void {
       el.style.overflow = 'hidden'

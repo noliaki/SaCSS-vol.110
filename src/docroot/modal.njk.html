@@ -5,11 +5,27 @@
 <div id="app">
   <ul class="photos">
     <li class="photo-item" v-for="(photo, index) in photos" :key="photo.id">
-      <button type="button">
+      <button type="button" class="photo-item-btn" @click.prevent="onClick(photo.id)">
         <img :src="photo.thumbnailUrl" :alt="photo.title">
       </button>
     </li>
   </ul>
+
+  <transition name="modal">
+    <div class="modal" v-show="isShownModal">
+      <div class="modal-bg"></div>
+      <transition name="modal-content" mode="out-in">
+        <div class="modal-content" v-if="target" :key="target && target.id">
+          <div class="detail">
+            <div class="detail-thumbnail"><img :src="target.thumbnailUrl" :alt="target.title"></div>
+            <p>{{ target.title }}</p>
+          </div>
+          <button type="button" class="detail-prev" @click.prevent="onClickPrev"></button>
+          <button type="button" class="detail-next" @click.prevent="onClickNext"></button>
+        </div>
+      </transition>
+    </div>
+  </transition>
 </div>
 {% endraw %}
 {% endblock %}

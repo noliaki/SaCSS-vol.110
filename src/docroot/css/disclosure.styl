@@ -3,17 +3,25 @@
 @tailwind utilities
 
 .posts-item
-  @apply border
+  @apply border-4 text-4xl border-blue-500
+  transition box-shadow 300ms ease
+
+  &.-active
+    @apply border-pink-500
+
+  &.-active
+  &:hover
+    @apply shadow-outline
 
 .posts-item + .posts-item
-  @apply mt-4
+  @apply mt-6
 
 .posts-item-btn
-  @apply block w-full text-left py-2 px-4
+  @apply block w-full text-left py-2 px-4 font-bold
 
 .posts-item-body
-  @apply py-2 px-4
+  @apply py-2 px-4 border-t border-dashed
 
 .post-body-enter-active
 .post-body-leave-active
-  transition height 3000ms ease
+  transition height 400ms ease
