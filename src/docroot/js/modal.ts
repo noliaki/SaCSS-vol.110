@@ -4,6 +4,7 @@ interface Data {
   photos: any[]
   selectedPhotoId: number | undefined
   isShownModal: boolean
+  detailTransitionName: string
 }
 
 const vm = new Vue({
@@ -12,7 +13,8 @@ const vm = new Vue({
     return {
       photos: [],
       selectedPhotoId: undefined,
-      isShownModal: false
+      isShownModal: false,
+      detailTransitionName: 'noop'
     }
   },
   computed: {
@@ -24,6 +26,15 @@ const vm = new Vue({
       return this.photos.find(
         (photo: any): any => photo.id === this.selectedPhotoId
       )
+    }
+  },
+  watch: {
+    selectedPhotoId(next: undefined | number, prev: undefined | number): void {
+      if (next === undefined || prev === undefined) {
+        this.detailTransitionName = 'noop'
+      } else {
+        this.detailTransitionName = 'modal-content'
+      }
     }
   },
   created(): void {
@@ -52,6 +63,10 @@ const vm = new Vue({
       this.selectedPhotoId = this.photos[
         nextPhotoIndex > this.photos.length - 1 ? 0 : nextPhotoIndex
       ].id
+    },
+    noop(): void {},
+    afterLeave(): void {
+      this.selectedPhotoId = undefined
     }
   }
 })

@@ -11,19 +11,19 @@
     </li>
   </ul>
 
-  <transition name="modal">
+  <transition name="modal" @after-leave="afterLeave">
     <div class="modal" v-show="isShownModal">
-      <div class="modal-bg"></div>
-      <transition name="modal-content" mode="out-in">
-        <div class="modal-content" v-if="target" :key="target && target.id">
-          <div class="detail">
+      <div class="modal-bg" @click.prevent="isShownModal = false"></div>
+      <div class="modal-content" v-if="target">
+        <transition :name="detailTransitionName" mode="out-in">
+          <div class="detail" :key="target.id">
             <div class="detail-thumbnail"><img :src="target.thumbnailUrl" :alt="target.title"></div>
             <p>{{ target.title }}</p>
           </div>
-          <button type="button" class="detail-prev" @click.prevent="onClickPrev"></button>
-          <button type="button" class="detail-next" @click.prevent="onClickNext"></button>
-        </div>
-      </transition>
+        </transition>
+        <button type="button" class="detail-prev" @click.prevent="onClickPrev"></button>
+        <button type="button" class="detail-next" @click.prevent="onClickNext"></button>
+      </div>
     </div>
   </transition>
 </div>

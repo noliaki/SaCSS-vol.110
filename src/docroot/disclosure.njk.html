@@ -18,9 +18,9 @@
     <transition
       name="post-body"
       @enter="enter"
-      @afterEnter="afterTransition"
+      @after-enter="afterTransition"
       @leave="leave"
-      @afterLeave="afterTransition"
+      @after-leave="afterTransition"
     >
       <div v-show="isShownBody">
         <div class="posts-item-body">{{ post.body }}</div>
