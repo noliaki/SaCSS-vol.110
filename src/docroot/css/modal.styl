@@ -2,6 +2,10 @@
 @tailwind components
 @tailwind utilities
 
+html
+  &.-clipped
+    @apply overflow-hidden
+
 .photos
   display: grid
   grid-gap 10px
@@ -14,10 +18,10 @@
     @apply w-full
 
 .modal
-  @apply fixed inset-0 flex
+  @apply fixed inset-0 flex overflow-auto p-6
 
 .modal-bg
-  @apply absolute inset-0
+  @apply fixed inset-0
   background-color: rgba(#000, 0.8)
 
 .modal-content
