@@ -57,7 +57,7 @@ const vm = new Vue({
     }
   },
   created(): void {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('./disclosure-item.json')
       .then((res: Response): Promise<any> => res.json())
       .then((result: any): void => {
         this.posts = result.slice(0, 100)
