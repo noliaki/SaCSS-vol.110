@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# mixi: http://mixi-platform.com/ns#" itemscope itemtype="http://schema.org/Article">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no, address=no, email=no">
+  <meta name="description" content="This is DESCRIPTION">
+  <meta property="fb:app_id" content="123456789">
+  <meta property="og:url" content="https://example.com/modal.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="This is TITLE" itemprop="name">
+  <meta property="og:image" content="https://example.com/ogp.png">
+  <meta property="og:image:alt" content="This is DESCRIPTION">
+  <meta property="og:description" content="This is DESCRIPTION" itemprop="description">
+  <meta property="og:site_name" content="This is TITLE">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="article:author" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@site_account">
+  <meta name="twitter:creator" content="@individual_account">
+  <meta name="twitter:url" content="https://example.com/modal.html">
+  <meta name="twitter:title" content="This is TITLE">
+  <meta name="twitter:description" content="This is DESCRIPTION">
+  <meta name="twitter:image" content="https://example.com/image.jpg">
+  <meta name="twitter:image:alt" content="This is DESCRIPTION">
+  <link rel="canonical" href="https://example.com/modal.html">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="./css/modal.css">
+  <title>This is TITLE</title>
+</head>
+<body>
+  <main class="container mx-auto p-4">
+    <div id="app">
+      <ul class="photos">
+        <li class="photo-item" v-for="(photo, index) in photos" :key="photo.id">
+          <button type="button" class="photo-item-btn" @click.prevent="onClick(photo.id)">
+            <img :src="photo.thumbnailUrl" :alt="photo.title">
+          </button>
+        </li>
+      </ul>
+      <transition name="modal" @after-leave="afterLeave">
+        <div class="modal" v-show="isShownModal">
+          <div class="modal-bg" @click.prevent="hideModal"></div>
+          <div class="modal-content" v-if="target">
+            <transition :name="detailTransitionName" mode="out-in">
+              <div class="detail" :key="target.id">
+                <div class="detail-thumbnail">
+                  <img :src="target.thumbnailUrl" :alt="target.title">
+                </div>
+                <p>{{ target.title }}</p>
+              </div>
+            </transition>
+            <button type="button" class="detail-prev" @click.prevent="onClickPrev"></button>
+            <button type="button" class="detail-next" @click.prevent="onClickNext"></button>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </main>
+  <script src="./js/modal.js"></script>
+</body>
+</html>

@@ -12,7 +12,8 @@ const bodyEl: HTMLBodyElement = document.querySelector('body')
 const scrollBarWidth: number = getScrollBarWidth()
 const clippedClassName: string = '-clipped'
 
-const vm = new Vue({
+/* eslint no-new: 0 */
+new Vue({
   el: '#app',
   data(): Data {
     return {
@@ -43,7 +44,7 @@ const vm = new Vue({
     }
   },
   created(): void {
-    fetch('./modal-items.json')
+    fetch('https://jsonplaceholder.typicode.com/photos')
       .then((res: Response): Promise<any> => res.json())
       .then((result: any): void => {
         this.photos = result
@@ -51,6 +52,7 @@ const vm = new Vue({
   },
   methods: {
     onClick(photoId: number): void {
+      console.log(photoId)
       this.showModal()
       this.selectedPhotoId = photoId
     },
@@ -108,5 +110,3 @@ function getScrollBarWidth(): number {
 
   return scrollbarWidth
 }
-
-console.log(vm)

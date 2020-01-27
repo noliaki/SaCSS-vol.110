@@ -21,7 +21,7 @@ const config: Config = {
     // unformatted: ['b', 'em']
   },
   src: 'src',
-  dist: 'dist',
+  dist: 'docs',
   docroot: 'src/docroot',
   stylus: {},
   autoprefixerOption: {
@@ -40,11 +40,11 @@ const config: Config = {
   },
   browsersync: {
     server: {
-      baseDir: 'dist',
+      baseDir: 'docs',
       directory: true
     },
     startPath: '/index.html',
-    files: 'dist',
+    files: 'docs',
     ghostMode: false,
     logLevel: 'debug',
     reloadDebounce: 500,
